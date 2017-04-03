@@ -32,6 +32,7 @@ class ClientTable extends Table
         ON clients.maritalStatusId = maritals.maritalid
     LEFT JOIN credits
         ON clients.idDuClient = credits.clients_id
+    ORDER BY clients.lastname ASC
 		
 			");
 	}

@@ -50,8 +50,16 @@ if ($page==='home') {
 	require ROOT.'/pages/admin/services/index.php';
 }elseif($page==='services.delete'){
 	require ROOT.'/pages/admin/services/delete.php';
+}elseif($page==='credits.add'){
+	require ROOT.'/pages/admin/credits/add.php';
+}elseif($page==='credits'){
+	require ROOT.'/pages/admin/credits/index.php';
 }else{
 	require ROOT.'/pages/errors/404.php';
 }
 $content = ob_get_clean();
 require ROOT.'/pages/templates/default.php'; 
+
+
+
+
