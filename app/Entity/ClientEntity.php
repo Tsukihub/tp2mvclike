@@ -6,11 +6,7 @@ use Core\Entity\Entity;
 */
 class ClientEntity extends Entity
 {
-	public function getAge()
-		{	
-			return (int)((time()-strtotime($this->birthdate))/(60*60*24*365));
-			
-		}
+
 	public function getIdentite(){
 		return strtoupper($this->lastname). ', ' .ucfirst($this->firstname);
 	}

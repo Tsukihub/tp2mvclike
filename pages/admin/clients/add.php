@@ -23,7 +23,7 @@ header('location: admin.php?p=clients');
 
 
 
-lastname 	firstname 	birthday 	address 	postalCode 	phone 	maritalStatusId 
+
 ?>
 
 <h2>add client</h2>

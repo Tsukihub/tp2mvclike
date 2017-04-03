@@ -28,13 +28,26 @@ class ClientTable extends Table
 	{
 		return $this->query("SELECT clients.*, maritals.*, credits.*
 	FROM clients
-    JOIN maritals
+    LEFT JOIN maritals
         ON clients.maritalStatusId = maritals.maritalid
-    JOIN credits
+    LEFT JOIN credits
         ON clients.idDuClient = credits.clients_id
 		
 			");
 	}
+
+
+	// public function lastAndFirstName()
+	// {
+	// 	return $this->query("SELECT clients.*, maritals.*, credits.*
+	// FROM clients
+ //    JOIN maritals
+ //        ON clients.maritalStatusId = maritals.maritalid
+ //    JOIN credits
+ //        ON clients.idDuClient = credits.clients_id
+		
+	// 		");
+	// }
 
 	// 	public function allByService($id)
 	// {
