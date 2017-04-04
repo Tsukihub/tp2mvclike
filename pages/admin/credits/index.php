@@ -16,9 +16,9 @@
 <tbody>
 <?php foreach (App::getInstance()->getTable("client")->lastAndFirstName() as  $client): ?>
 	<tr>
-	<td><?= $client->lastname ?></td>
-		<td><?= $client->firstname ?></td>
-			<td><?= $client->idDuClient ?></td>
+	<td><?= htmlspecialchars($client->lastname) ?></td>
+		<td><?= htmlspecialchars($client->firstname) ?></td>
+			<td><?= htmlspecialchars($client->idDuClient) ?></td>
 		<td>
 			<form action="admin.php?p=credit.delete" method="post">
 				<input type="hidden" name="id" value="<?= $client->idDuClient; ?>">
@@ -28,7 +28,8 @@
 		</td>
 		<td>	
 		<form action="admin.php?p=credits.add" method="post">
-				<input type="hidden" name="id" value="<?= $client->idDuClient; ?>">
+				<input type="hidden" name="id" value="<?= htmlspecialchars($client->idDuClient); ?>">
+				<input type="hidden" name="nom" value="<?= htmlspecialchars($client->lastname); ?>">
 				<input class="btn btn-primary" type="submit" value="ajout crédit">
 			</form>
 		</td>

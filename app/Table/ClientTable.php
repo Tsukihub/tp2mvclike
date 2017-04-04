@@ -38,6 +38,20 @@ class ClientTable extends Table
 	}
 
 
+	// public function findbis($id)
+	// {
+	// 	return $this->query("SELECT clients.*, maritals.*, credits.*
+	// FROM clients
+ //    LEFT JOIN maritals
+ //        ON clients.maritalStatusId = maritals.maritalid
+ //    LEFT JOIN credits
+ //        ON clients.idDuClient = credits.clients_id
+ //    WHERE clients.idDuClient = ?", [$id], true);
+		
+			
+	// }
+
+
 	// public function lastAndFirstName()
 	// {
 	// 	return $this->query("SELECT clients.*, maritals.*, credits.*
@@ -50,28 +64,36 @@ class ClientTable extends Table
 	// 		");
 	// }
 
-	// 	public function allByService($id)
-	// {
-	// 	return $this->query("SELECT 
-	// 		clients.idDuClient, 
-	// 		clients.nom, 
-	// 		clients.prenom, 
-	// 		clients.prenom, 
-	// 		clients.adresse, 
-	// 		clients.date_de_naissance, 
-	// 		clients.code_postal, 
-	// 		clients.numero_de_telephone, 
-	// 		services.nom_du_service AS service
-	// 		FROM clients 
-	// 		LEFT JOIN services
-	// 		ON services_id= services.id
-	// 		WHERE services.id = ?
-	// 		", [$id]);
-	// }
+		public function findbis($id)
+	{
+		return $this->query("SELECT 
+			clients.idDuClient, 
+			clients.lastname, 
+			clients.firstname, 
+			clients.birthday, 
+			clients.address, 
+			clients.phone, 
+			clients.postalCode,
+			clients.maritalStatusId, 
+			maritals.maritalStat,
+			credits.body, 
+			credits.amount
+			FROM clients 
+			LEFT JOIN maritals
+			ON clients.maritalStatusId = maritals.maritalid
+			LEFT JOIN credits
+        	ON clients.idDuClient = credits.clients_id
+			WHERE clients.idDuClient = ?
+			", [$id]);
+	}
 
 
 		public function deletebis($id)
 	{
 		return $this->query("DELETE FROM {$this->table} WHERE idDuClient = ?", [$id], true);
 	}
+
+
+
+
 }

@@ -1,5 +1,5 @@
 <h2>Liste des clients</h2>
-<p><a href="index.php?p=clients.details">Informations clients détaillées</a></p>
+
 <table class="table table-bordered col-md-12 text-center">
 <thead>
 
@@ -10,10 +10,16 @@
 </tr>
 </thead>
 <tbody>
-<?php foreach (App::getInstance()->getTable("client")->lastAndFirstName() as  $client): ?>
+<?php foreach (App::getInstance()->getTable("client")->all() as  $client): ?>
 	<tr>
-	<td><?= $client->identite ?></td>
-		<td><?= $client->birthday ?></td>
+	<td><?= htmlspecialchars($client->identite) ?></td>
+		<td><?= htmlspecialchars($client->birthday) ?></td>
+		<td>
+			<form action="index.php?p=clients.details" method="post">
+				<input type="hidden" name="idclient" value="<?= $client->idDuClient; ?>">
+				<input class="btn btn-danger" type="submit" value="détails">
+			</form>
+		</td>
 	
 	</tr>
 	<?php endforeach ?>

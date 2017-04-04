@@ -12,17 +12,33 @@
 </tr>
 </thead>
 <tbody>
-<?php foreach (App::getInstance()->getTable("client")->lastAndFirstName() as  $client): ?>
+
+<?php $counter=0; ?>
+<?php foreach (App::getInstance()->getTable("client")->findbis($_POST['idclient']) as  $client): ?>
 
 	<tr>
-		<td><?= $client->identite ?></td>
-		<td><?= $client->birthday ?></td>
-		<td><?= $client->adressecomplete ?></td>
-		<td><?= $client->maritalStat ?></td>
-		<td><?= $client->endettement ?></td>		
+		<?php if($counter==0){?>
+		<td><?= htmlspecialchars($client->identite) ?></td>
+		<td><?= htmlspecialchars($client->birthday) ?></td>
+		<td><?= htmlspecialchars($client->adressecomplete) ?></td>
+		<td><?= htmlspecialchars($client->maritalStat) ?></td>
+		
+		<td><?= htmlspecialchars($client->endettement) ?></td>	
 
 	</tr>
+	<?php $counter+=1;}else{ ?>
+
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><?= htmlspecialchars($client->endettement) ?></td>	
+
+	</tr>
+	<?php }?>
 <?php endforeach ?>
+
 
 </tbody>
 </table>

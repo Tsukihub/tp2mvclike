@@ -7,13 +7,13 @@ var_dump($_POST['lastname']);
 App::getInstance()->getTable('Client')->create([
 
 
-"lastname" => $_POST['lastname'],
-"firstname"=> $_POST['firstname'],
-"birthday"=>$_POST['birthday'],
-"address" => $_POST['address'],
-"postalCode" => $_POST['postalCode'],
-"phone" => $_POST['phone'],
-"maritalStatusId" => $_POST['maritalStatusId']
+"lastname" => htmlspecialchars($_POST['lastname']),
+"firstname"=> htmlspecialchars($_POST['firstname']),
+"birthday"=>htmlspecialchars($_POST['birthday']),
+"address" => htmlspecialchars($_POST['address']),
+"postalCode" => htmlspecialchars($_POST['postalCode']),
+"phone" => htmlspecialchars($_POST['phone']),
+"maritalStatusId" => htmlspecialchars($_POST['maritalStatusId'])
 
 ]);
 
@@ -38,7 +38,7 @@ header('location: admin.php?p=clients');
 <select name="maritalStatusId" class="form form-control">
 <?php foreach (App::getInstance()->getTable("Marital")->all() as $maritals):?>
     <option value='<?= $maritals->maritalid ?>' ?>
-        <?= $maritals->maritalStat ?> 
+        <?= htmlspecialchars($maritals->maritalStat) ?> 
     </option>
 <?php endforeach ?>
 </select>

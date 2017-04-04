@@ -9,16 +9,15 @@
 <tr>
 <td>NOM </td>
 <td>PRENOM</td>
-
-<td>ACTION</td>
+<td>Id du client</td>
 </tr>
 </thead>
 <tbody>
-<?php foreach (App::getInstance()->getTable("client")->lastAndFirstName() as  $client): ?>
+<?php foreach (App::getInstance()->getTable("client")->all() as  $client): ?>
 	<tr>
-	<td><?= $client->lastname ?></td>
-		<td><?= $client->firstname ?></td>
-			<td><?= $client->idDuClient ?></td>
+	<td><?= htmlspecialchars($client->lastname) ?></td>
+		<td><?= htmlspecialchars($client->firstname) ?></td>
+		<td><?= htmlspecialchars($client->idDuClient) ?></td>
 		<td>
 			<form action="admin.php?p=clients.delete" method="post">
 				<input type="hidden" name="id" value="<?= $client->idDuClient; ?>">
