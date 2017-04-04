@@ -19,13 +19,7 @@
 	<td><?= htmlspecialchars($client->lastname) ?></td>
 		<td><?= htmlspecialchars($client->firstname) ?></td>
 			<td><?= htmlspecialchars($client->idDuClient) ?></td>
-		<td>
-			<form action="admin.php?p=credit.delete" method="post">
-				<input type="hidden" name="id" value="<?= $client->idDuClient; ?>">
-				<input class="btn btn-danger" type="submit">
-			</form>
-			
-		</td>
+
 		<td>	
 		<form action="admin.php?p=credits.add" method="post">
 				<input type="hidden" name="id" value="<?= htmlspecialchars($client->idDuClient); ?>">
